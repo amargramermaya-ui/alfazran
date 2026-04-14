@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আল-ফাযরান | কোর্সসমূহ</title>
+
+<link rel="icon" href="https://raw.githubusercontent.com/amargramermaya-ui/superlative/main/logo%20png.png" type="image/png">
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/amargramermaya-ui/superlative/main/logo%20png.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   VARIABLES & RESET
+═══════════════════════════════════════ */
+:root {
+  /* Al-Fazraan Brand Colors */
+  --forest:    #084B34; 
+  --emerald:   #0B6A49; 
+  --leaf:      #129C6C; 
+  --mint:      #E6F4EE; 
+  --sage:      #F2F8F5; 
+  --gold:      #FA9E05; 
+  --gold-lt:   #FBC554; 
+  --gold-dk:   #D18404; 
+  
+  --cream:     #faf8f2;
+  --white:     #ffffff;
+  --ink:       #1a1a1a;
+  --gray:      #555;
+  --soft:      #888;
+  --border:    rgba(250, 158, 5, 0.22);
+  --shadow:    0 8px 40px rgba(8, 75, 52, 0.10);
+  --rad:       16px;
+  --rad-sm:    10px;
+  --rad-lg:    24px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ═══════════════════════════════════════
+   UTILITY
+═══════════════════════════════════════ */
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+.sec { padding: 80px 0; }
+.sec-sm { padding: 60px 0; }
+.tag {
+  display: inline-block;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 10px;
+}
+.title {
+  font-family: 'Tiro Bangla', serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+  font-weight: 400; color: var(--forest);
+  line-height: 1.25; margin-bottom: 14px;
+}
+.body-text { font-size: 1rem; color: var(--gray); line-height: 1.8; }
+.divider { width: 52px; height: 3px; background: linear-gradient(90deg,var(--gold),var(--gold-lt)); border-radius: 2px; margin: 14px 0 20px; }
+.center { text-align: center; }
+.center .divider { margin-left: auto; margin-right: auto; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: 50px;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; border: 2px solid transparent;
+  transition: all 0.22s; text-decoration: none;
+}
+.btn-gold { background: var(--gold); color: var(--forest); border-color: var(--gold); }
+.btn-gold:hover { background: var(--gold-lt); border-color: var(--gold-lt); transform: translateY(-2px); }
+.btn-forest { background: var(--forest); color: #fff; border-color: var(--forest); }
+.btn-forest:hover { background: var(--emerald); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(--forest); border-color: var(--forest); }
+.btn-outline:hover { background: var(--forest); color: #fff; }
+.btn-outline-w { background: transparent; color: #fff; border-color: rgba(255,255,255,0.6); }
+.btn-outline-w:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+.btn-green-sm {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 50px;
+  font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; border: 2px solid transparent; transition: all 0.2s;
+}
+.btn-green-sm.primary { background: var(--forest); color: #fff; border-color: var(--forest); }
+.btn-green-sm.primary:hover { background: var(--emerald); }
+.btn-green-sm.secondary { background: transparent; color: var(--gold); border-color: var(--gold); }
+.btn-green-sm.secondary:hover { background: var(--gold); color: var(--forest); }
+
+/* ═══════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════ */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  height: 68px;
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.nav-menu { display: flex; gap: 1.8rem; align-items: center; }
+.nav-menu a { font-size: 0.9rem; font-weight: 500; color: var(--gray); transition: color 0.2s; }
+.nav-menu a:hover { color: var(--forest); }
+.nav-cta { padding: 9px 20px; font-size: 0.85rem; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--forest); border-radius: 2px; transition: all 0.3s; }
+
+.mobile-menu {
+  display: none; position: fixed; top: 68px; left: 0; right: 0;
+  background: #fff; border-bottom: 1px solid var(--border);
+  flex-direction: column; padding: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  z-index: 998;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size: 1rem; color: var(--forest); font-weight: 500; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-cta { margin-top: 16px; }
+
+/* ═══════════════════════════════════════
+   HERO (COURSE VERSION)
+═══════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  background: linear-gradient(145deg, var(--forest) 0%, #053322 55%, var(--forest) 100%);
+  display: flex; align-items: center;
+  padding: 100px 0 60px; position: relative; overflow: hidden;
+}
+.hero-pattern {
+  position: absolute; inset: 0; opacity: 0.05;
+  background-image: repeating-linear-gradient(
+    45deg, #fff 0, #fff 1px, transparent 0, transparent 50%
+  );
+  background-size: 28px 28px;
+}
+.hero-glow {
+  position: absolute; right: -100px; top: 50%;
+  transform: translateY(-50%);
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(250, 158, 5, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  align-items: center; position: relative; z-index: 1;
+}
+.hero-arabic {
+  font-size: 1.5rem; color: var(--gold-lt); opacity: 0.85;
+  margin-bottom: 18px; font-family: 'Tiro Bangla', serif;
+}
+.hero-title {
+  font-family: 'Tiro Bangla', serif;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  color: #fff; line-height: 1.2; margin-bottom: 20px;
+  font-weight: 400;
+}
+.hero-title em { color: var(--gold-lt); font-style: normal; }
+.hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.75); max-width: 460px; margin-bottom: 36px; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-stats {
+  display: flex; gap: 28px; margin-top: 40px;
+  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Tiro Bangla', serif;
+  font-size: 1.8rem; color: var(--gold-lt); font-weight: 400;
+}
+.stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+.hero-right { display: flex; flex-direction: column; gap: 16px; }
+.hero-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--rad-lg); padding: 22px 24px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s, background 0.25s;
+}
+.hero-card:hover { transform: translateX(-6px); background: rgba(255,255,255,0.13); }
+.hero-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.hero-card-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: linear-gradient(135deg,var(--gold),var(--gold-dk));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.hero-card-top h4 { color: #fff; font-size: 0.97rem; font-weight: 600; }
+.hero-card p { color: rgba(255,255,255,0.62); font-size: 0.84rem; line-height: 1.55; }
+
+/* ═══════════════════════════════════════
+   MISSION
+═══════════════════════════════════════ */
+#mission { background: var(--white); }
+.mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.mission-cards { display: flex; flex-direction: column; gap: 16px; }
+.mc {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 18px; border-radius: var(--rad);
+  border: 1px solid var(--border); transition: all 0.22s;
+}
+.mc:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(250, 158, 5, 0.1); }
+.mc-icon {
+  width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg,var(--forest),var(--emerald));
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+}
+.mc h4 { font-size: 0.97rem; font-weight: 600; color: var(--forest); margin-bottom: 4px; }
+.mc p { font-size: 0.85rem; color: var(--soft); line-height: 1.55; }
+
+/* ═══════════════════════════════════════
+   COURSES GRID
+═══════════════════════════════════════ */
+#courses { background: var(--sage); }
+.courses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 50px; }
+.course-card {
+  background: var(--white); border-radius: var(--rad-lg);
+  border: 1px solid var(--border); overflow: hidden;
+  transition: transform 0.28s, box-shadow 0.28s;
+}
+.course-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.course-img {
+  height: 220px; display: flex; align-items: center; justify-content: center;
+  font-size: 5.5rem; position: relative;
+}
+.course-img.quran { background: linear-gradient(135deg,#e6f4ee,#084b3422); }
+.course-img.health { background: linear-gradient(135deg,#fff9e6,#ffc10722); }
+.course-badge {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--forest); color: #fff;
+  font-size: 0.7rem; font-weight: 700; padding: 4px 12px; border-radius: 50px;
+  letter-spacing: 0.06em;
+}
+.status-tag {
+  position: absolute; top: 14px; right: 14px;
+  font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 50px;
+}
+.status-tag.open { background: var(--mint); color: var(--forest); }
+.status-tag.closed { background: #fde8e8; color: #b71c1c; }
+.course-body { padding: 24px; }
+.course-body h3 { font-family: 'Tiro Bangla', serif; font-size: 1.3rem; color: var(--forest); margin-bottom: 6px; }
+.course-price { font-size: 1.05rem; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+.course-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.65; margin-bottom: 14px; }
+.course-benefits { margin-bottom: 14px; }
+.course-benefits li {
+  font-size: 0.85rem; color: var(--gray);
+  padding: 4px 0; border-bottom: 1px solid #f4f4f4;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.course-benefits li::before { content: '✓'; color: var(--leaf); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.course-details {
+  background: var(--sage); border-radius: var(--rad-sm);
+  padding: 10px 14px; font-size: 0.83rem; color: var(--gray); margin-bottom: 18px;
+  line-height: 1.55;
+}
+.course-details strong { color: var(--forest); }
+.course-btns { display: flex; gap: 10px; }
+
+/* ═══════════════════════════════════════
+   COURSE DETAIL MODAL
+═══════════════════════════════════════ */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.65); align-items: center; justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--white); border-radius: var(--rad-lg);
+  max-width: 780px; width: 100%; max-height: 90vh; overflow-y: auto;
+  position: relative;
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #f0f0f0; border: none; cursor: pointer;
+  font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s; z-index: 1;
+}
+.modal-close:hover { background: #e0e0e0; }
+.modal-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.modal-img {
+  height: 320px; display: flex; align-items: center; justify-content: center;
+  font-size: 7rem; border-radius: var(--rad-lg) 0 0 var(--rad-lg);
+}
+.modal-img.quran { background: linear-gradient(135deg,#e6f4ee,#084b3433); }
+.modal-img.health { background: linear-gradient(135deg,#fff9e6,#ffc10733); }
+.modal-content { padding: 30px; }
+.modal-content h2 { font-family: 'Tiro Bangla', serif; font-size: 1.5rem; color: var(--forest); margin-bottom: 6px; }
+.modal-price { font-size: 1.15rem; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+.modal-desc { font-size: 0.88rem; color: var(--gray); margin-bottom: 16px; line-height: 1.7; }
+.modal-section-title { font-size: 0.78rem; font-weight: 700; color: var(--forest); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; margin-top: 14px; }
+.modal-list li { font-size: 0.85rem; color: var(--gray); padding: 4px 0; display: flex; gap: 8px; }
+.modal-list li::before { content: '✓'; color: var(--leaf); font-weight: 700; flex-shrink: 0; }
+.trust-badges { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+.badge { font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 50px; }
+.badge.green { background: var(--mint); color: var(--forest); }
+.badge.gold { background: #fef9e7; color: var(--gold-dk); }
+.review-box { background: var(--sage); border-radius: var(--rad-sm); padding: 12px; margin-top: 14px; }
+.review-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 4px; }
+.review-text { font-size: 0.83rem; color: var(--gray); font-style: italic; }
+.review-author { font-size: 0.75rem; color: var(--soft); margin-top: 4px; font-weight: 600; }
+
+/* ═══════════════════════════════════════
+   ENROLL SYSTEM
+═══════════════════════════════════════ */
+#enroll { background: var(--white); }
+.enroll-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; margin-top: 50px; }
+.enroll-options { display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px; }
+.enroll-opt {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px; border-radius: var(--rad);
+  border: 1px solid var(--border); transition: all 0.22s;
+  text-decoration: none;
+}
+.enroll-opt:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(250, 158, 5, 0.1); transform: translateX(4px); }
+.enroll-opt-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+}
+.oi-phone { background: var(--mint); }
+.oi-wa { background: var(--mint); }
+.oi-online { background: #fef9e7; }
+.enroll-opt h4 { font-size: 0.95rem; font-weight: 600; color: var(--forest); margin-bottom: 2px; }
+.enroll-opt p { font-size: 0.8rem; color: var(--soft); }
+.enroll-form-box {
+  background: var(--sage); border-radius: var(--rad-lg);
+  padding: 32px; border: 1px solid var(--border);
+}
+.enroll-form-box h3 { font-family: 'Tiro Bangla', serif; font-size: 1.2rem; color: var(--forest); margin-bottom: 20px; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--forest); margin-bottom: 6px; }
+.field input, .field select, .field textarea {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid #ddd; border-radius: var(--rad-sm);
+  font-family: 'Hind Siliguri', sans-serif; font-size: 0.92rem;
+  background: var(--white); color: var(--ink);
+  transition: border-color 0.2s; outline: none;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); }
+.field select { cursor: pointer; }
+.field textarea { resize: vertical; min-height: 80px; }
+.submit-btn {
+  width: 100%; padding: 14px; border: none; border-radius: 50px;
+  background: var(--forest); color: #fff;
+  font-family: 'Hind Siliguri', sans-serif; font-size: 1rem; font-weight: 700;
+  cursor: pointer; transition: all 0.22s;
+}
+.submit-btn:hover { background: var(--emerald); transform: translateY(-2px); }
+
+/* ═══════════════════════════════════════
+   TRUST
+═══════════════════════════════════════ */
+#trust { background: var(--sage); }
+.trust-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 46px; }
+.trust-card {
+  background: var(--white); border-radius: var(--rad);
+  padding: 28px 18px; text-align: center;
+  border: 1px solid var(--border); transition: all 0.25s;
+}
+.trust-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.trust-icon { font-size: 2.4rem; margin-bottom: 12px; }
+.trust-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--forest); margin-bottom: 6px; }
+.trust-card p { font-size: 0.8rem; color: var(--soft); line-height: 1.5; }
+
+/* ═══════════════════════════════════════
+   FINAL CTA
+═══════════════════════════════════════ */
+#cta {
+  background: linear-gradient(135deg,var(--gold) 0%, var(--gold-dk) 100%);
+  text-align: center; padding: 100px 0; position: relative; overflow: hidden;
+}
+#cta::before {
+  content:''; position:absolute; inset:0; opacity:0.07;
+  background-image: repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 40%);
+  background-size: 32px 32px;
+}
+.cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+#cta h2 { font-family: 'Tiro Bangla', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--forest); margin-bottom: 14px; }
+#cta p { color: rgba(8, 75, 52, 0.78); font-size: 1rem; line-height: 1.7; margin-bottom: 32px; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-white { background: #fff; color: var(--forest); border: 2px solid #fff; }
+.btn-white:hover { background: transparent; color: #fff; }
+.btn-dark { background: var(--forest); color: #fff; border: 2px solid var(--forest); }
+.btn-dark:hover { background: transparent; color: var(--forest); border-color: var(--forest); }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer {
+  background: #031E14; padding: 44px 0 28px; text-align: center;
+}
+.footer-logo { font-family: 'Tiro Bangla', serif; font-size: 1.4rem; color: #fff; margin-bottom: 8px; }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
+.footer-links a { color: rgba(255,255,255,0.45); font-size: 0.84rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
+
+/* ═══════════════════════════════════════
+   NOTIFICATION TOAST
+═══════════════════════════════════════ */
+.toast {
+  position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+  background: var(--forest); color: #fff;
+  padding: 14px 22px; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  display: none; align-items: center; gap: 8px;
+  animation: slideUp 0.3s ease;
+}
+.toast.show { display: flex; }
+@keyframes slideUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(28px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.hero-arabic { animation: fadeUp 0.6s ease both; }
+.hero-title { animation: fadeUp 0.7s 0.1s ease both; }
+.hero-sub { animation: fadeUp 0.7s 0.2s ease both; }
+.hero-btns { animation: fadeUp 0.7s 0.3s ease both; }
+.hero-stats { animation: fadeUp 0.7s 0.4s ease both; }
+.hero-card { animation: fadeUp 0.7s ease both; }
+.hero-card:nth-child(2) { animation-delay: 0.12s; }
+.hero-card:nth-child(3) { animation-delay: 0.24s; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 960px) {
+  .hero-inner, .mission-grid, .enroll-grid { grid-template-columns: 1fr; }
+  .courses-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr 1fr; }
+  .modal-grid { grid-template-columns: 1fr; }
+  .modal-img { border-radius: var(--rad-lg) var(--rad-lg) 0 0; }
+  .hero-right { flex-direction: row; flex-wrap: wrap; }
+  .hero-card { flex: 1; min-width: 260px; }
+  .nav-menu, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 600px) {
+  .trust-grid { grid-template-columns: 1fr; }
+  .hero-btns, .cta-btns { flex-direction: column; align-items: flex-start; }
+  .cta-btns { align-items: center; }
+  .modal-box { max-height: 95vh; }
+  .hero-stats { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="wrap nav-inner">
+    
+    <a href="index.html" class="nav-logo">
+      <img src="https://raw.githubusercontent.com/amargramermaya-ui/superlative/main/logo%20png.png" alt="Al-Fazraan Logo" style="height: 50px; width: auto; border-radius: 6px;">
+    </a>
+
+    <nav class="nav-menu">
+      <a href="index.html">প্রোডাক্ট হোম</a>
+      <a href="#hero">কোর্সসমূহ</a>
+      <a href="#mission">আমাদের লক্ষ্য</a>
+      <a href="#enroll">যোগাযোগ</a>
+    </nav>
+    <a href="#enroll" class="btn btn-gold nav-cta">🎓 ভর্তি হোন</a>
+    <div class="hamburger" onclick="toggleMenu()" id="ham">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">প্রোডাক্ট হোম</a>
+  <a href="#hero" onclick="closeMenu()">কোর্সসমূহ</a>
+  <a href="#mission" onclick="closeMenu()">আমাদের লক্ষ্য</a>
+  <a href="#enroll" onclick="closeMenu()">যোগাযোগ</a>
+  <a href="#enroll" class="btn btn-gold mobile-cta" onclick="closeMenu()">🎓 ভর্তি হোন</a>
+</div>
+
+<section id="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-arabic">﷽</div>
+        <h1 class="hero-title">বিশুদ্ধ জ্ঞান ও<br><em>সুস্থ জীবনের সন্ধানে</em></h1>
+        <p class="hero-sub">আল-ফাযরানের বিশেষ কোর্সগুলোর মাধ্যমে কুরআন, স্বাস্থ্য এবং সুন্নাহ ভিত্তিক লাইফস্টাইলের সঠিক জ্ঞান অর্জন করুন।</p>
+        <div class="hero-btns">
+          <a href="#courses" class="btn btn-gold">📖 কোর্সগুলো দেখুন</a>
+          <a href="#enroll" class="btn btn-outline-w">🎓 সরাসরি ভর্তি হোন</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">১০০%</div>
+            <div class="stat-lbl">খাঁটি জ্ঞান</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">লাইভ</div>
+            <div class="stat-lbl">ও রেকর্ডেড ক্লাস</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">আজীবন</div>
+            <div class="stat-lbl">অ্যাক্সেস</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="hero-card-icon">📖</div>
+            <h4>তাজবীদ ও কুরআন শিক্ষা</h4>
+          </div>
+          <p>সহীহভাবে কুরআন পড়ার বেসিক টু অ্যাডভান্স কোর্স। অভিজ্ঞ ওস্তাদদের সরাসরি তত্ত্বাবধানে শিখুন।</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="hero-card-icon">🌿</div>
+            <h4>তিব্বে নববী (প্রফেটিক মেডিসিন)</h4>
+          </div>
+          <p>রাসূল (সা.) এর সুন্নাহ অনুযায়ী সুস্থ ও সুন্দর জীবনযাপনের গাইডলাইন এবং প্রাকৃতিক চিকিৎসা।</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="hero-card-icon">🎓</div>
+            <h4>সার্টিফিকেট ও গাইডলাইন</h4>
+          </div>
+          <p>কোর্স শেষে সার্টিফিকেট প্রদান করা হয় এবং বাস্তব জীবনে প্রয়োগ করার জন্য লাইফটাইম সাপোর্ট।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mission" class="sec">
+  <div class="wrap">
+    <div class="mission-grid">
+      <div>
+        <div class="tag">আমাদের এডুকেশন মিশন</div>
+        <h2 class="title">সুন্নাহ ভিত্তিক জ্ঞান — সকলের জন্য উন্মুক্ত</h2>
+        <div class="divider"></div>
+        <p class="body-text">আল-ফাযরান বিশ্বাস করে যে সঠিক জ্ঞান ছাড়া সুস্থ জীবনযাপন সম্ভব নয়। আমরা শুধু বিশুদ্ধ প্রোডাক্টই দিচ্ছি না, বরং কিভাবে সুন্নাহ অনুযায়ী জীবনযাপন করতে হয় তার শিক্ষাও প্রদান করছি।</p>
+        <br>
+        <p class="body-text">আমাদের কোর্সগুলো এমনভাবে সাজানো হয়েছে যেন যেকোনো বয়সের মানুষ ঘরে বসেই ইসলাম ও স্বাস্থ্য সম্পর্কে সঠিক জ্ঞান অর্জন করতে পারে।</p>
+      </div>
+      <div class="mission-cards">
+        <div class="mc">
+          <div class="mc-icon">📖</div>
+          <div>
+            <h4>সহীহ কুরআন তিলাওয়াত</h4>
+            <p>কুরআনকে তার সঠিক উচ্চারণে (তাজবীদসহ) পড়া প্রত্যেক মুসলিমের জন্য জরুরি।</p>
+          </div>
+        </div>
+        <div class="mc">
+          <div class="mc-icon">🏃</div>
+          <div>
+            <h4>হেলদি লাইফস্টাইল</h4>
+            <p>সুস্থ থাকা একটি ইসলামিক সুন্নাহ। আমরা ইসলামিক নির্দেশনা অনুযায়ী ডায়েট ও সুস্থতার জ্ঞান দিই।</p>
+          </div>
+        </div>
+        <div class="mc">
+          <div class="mc-icon">💻</div>
+          <div>
+            <h4>সহজ অনলাইন লার্নিং</h4>
+            <p>জটিলতা ছাড়া সরাসরি স্মার্টফোন বা ল্যাপটপের মাধ্যমে ক্লাসে জয়েন করার সুবিধা।</p>
+          </div>
+        </div>
+        <div class="mc">
+          <div class="mc-icon">🤝</div>
+          <div>
+            <h4>সবসময় সাপোর্ট</h4>
+            <p>আমাদের ইন্সট্রাক্টররা ক্লাসের বাইরেও যেকোনো প্রশ্নের উত্তর দেওয়ার জন্য প্রস্তুত থাকেন।</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" class="sec">
+  <div class="wrap">
+    <div class="tag center">আমাদের কোর্সসমূহ</div>
+    <h2 class="title center">প্রয়োজনীয় ও জীবনমুখী শিক্ষা</h2>
+    <div class="divider center"></div>
+    <p class="body-text center" style="max-width:540px;margin:0 auto">নিজেকে এবং নিজের পরিবারকে সঠিকভাবে গাইড করার জন্য আল-ফাযরানের এই বিশেষ কোর্সগুলোতে আজই এনরোল করুন।</p>
+    <div class="courses-grid">
+
+      <div class="course-card">
+        <div class="course-img quran">
+          📖
+          <span class="course-badge">বেস্টসেলার</span>
+          <span class="status-tag open">✓ ভর্তি চলছে</span>
+        </div>
+        <div class="course-body">
+          <h3>তাজবীদ ও সহীহ কুরআন শিক্ষা</h3>
+          <div class="course-price">কোর্স ফি: ৳ ১,০০০ (এককালীন)</div>
+          <p class="course-desc">শুদ্ধভাবে কুরআন তিলাওয়াত শেখার পূর্ণাঙ্গ কোর্স। যারা কুরআন পড়তে পারেন না বা যাদের উচ্চারণে সমস্যা আছে তাদের জন্য সেরা কোর্স।</p>
+          <ul class="course-benefits">
+            <li>আরবি হরফ ও মাখরাজ পরিচিতি</li>
+            <li>তাজবীদের সকল নিয়মকানুন</li>
+            <li>সরাসরি ওস্তাদকে তিলাওয়াত শোনানোর সুযোগ</li>
+            <li>লাইভ ক্লাস ও ক্লাস রেকর্ডিং সুবিধা</li>
+          </ul>
+          <div class="course-details"><strong>মেয়াদ:</strong> ২ মাস (সপ্তাহে ৩ দিন ক্লাস)।</div>
+          <div class="course-btns">
+            <button class="btn-green-sm primary" onclick="openModal('quran')">📋 সিলেবাস দেখুন</button>
+            <button class="btn-green-sm secondary" onclick="scrollToEnroll('কুরআন শিক্ষা')">🎓 এনরোল করুন</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-img health">
+          🌿
+          <span class="course-badge">নতুন কোর্স</span>
+          <span class="status-tag open">✓ ভর্তি চলছে</span>
+        </div>
+        <div class="course-body">
+          <h3>তিব্বে নববী ও প্রফেটিক লাইফস্টাইল</h3>
+          <div class="course-price">কোর্স ফি: ৳ ৮০০ (এককালীন)</div>
+          <p class="course-desc">রাসূল (সা.) এর সুন্নাহ সম্মত খাবার ও সুস্থ জীবনযাপনের গাইডলাইন। প্রাকৃতিক উপায়ে রোগ নিরাময়ের বিস্তারিত জ্ঞান।</p>
+          <ul class="course-benefits">
+            <li>কুরআন ও সুন্নাহ ভিত্তিক খাদ্যাভ্যাস</li>
+            <li>প্রাকৃতিক উপাদান (মধু, কালোজিরা, জয়তুন) এর ব্যবহার</li>
+            <li>রোগ প্রতিরোধ ক্ষমতা বাড়ানোর উপায়</li>
+            <li>বিশেষজ্ঞ ডায়েটেশিয়ান ও স্কলারদের ক্লাস</li>
+          </ul>
+          <div class="course-details"><strong>মেয়াদ:</strong> ১ মাস (সপ্তাহে ২ দিন ক্লাস)।</div>
+          <div class="course-btns">
+            <button class="btn-green-sm primary" onclick="openModal('health')">📋 সিলেবাস দেখুন</button>
+            <button class="btn-green-sm secondary" onclick="scrollToEnroll('তিব্বে নববী')">🎓 এনরোল করুন</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="modal-quran" onclick="closeModal(event, 'quran')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModalDirect('quran')">✕</button>
+    <div class="modal-grid">
+      <div class="modal-img quran">📖</div>
+      <div class="modal-content">
+        <h2>তাজবীদ ও সহীহ কুরআন শিক্ষা</h2>
+        <div class="modal-price">৳ ১,০০০ (সম্পূর্ণ কোর্স ফি)</div>
+        <p class="modal-desc">এই কোর্সের মাধ্যমে আপনি ঘরে বসেই সম্পূর্ণ সহীহ ও শুদ্ধ উচ্চারণে কুরআন তিলাওয়াত শিখতে পারবেন। একদম জিরো লেভেল থেকে শুরু করে এডভান্সড তাজবীদ শেখানো হবে।</p>
+        <div class="trust-badges">
+          <span class="badge green">✓ লাইভ ক্লাস</span>
+          <span class="badge green">✓ রেকর্ডিং অ্যাক্সেস</span>
+          <span class="badge gold">⭐ সার্টিফিকেট</span>
+        </div>
+        <div class="modal-section-title">কোর্সে যা যা শিখবেন</div>
+        <ul class="modal-list">
+          <li>আরবি ২৯টি হরফের সঠিক উচ্চারণ (মাখরাজ)</li>
+          <li>হরকত, তানভীন, সুকুন ও তাশদীদের ব্যবহার</li>
+          <li>মাদ, গুন্নাহ ও ওয়াকফ করার নিয়ম</li>
+          <li>নামাজে পঠিত গুরুত্বপূর্ণ সূরাসমূহের মশ্ক (প্র্যাকটিস)</li>
+          <li>কুরআন রিডিং স্পিড বাড়ানোর টেকনিক</li>
+        </ul>
+        <div class="modal-section-title">কোর্সের সময়সূচি</div>
+        <ul class="modal-list">
+          <li>সপ্তাহে ৩ দিন (রাত ৯:০০ টা - ১০:০০ টা)</li>
+          <li>মোট ক্লাস: ২৪টি (২ মাস)</li>
+          <li>মাধ্যম: Google Meet / Zoom</li>
+        </ul>
+        <div class="review-box">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"আমি আগে কুরআন পড়তে পারতাম না, এই কোর্সের ওস্তাদদের সাহায্যে আমি এখন তাজবীদসহ খুব সুন্দর করে কুরআন পড়তে পারি। আলহামদুলিল্লাহ!"</div>
+          <div class="review-author">— সাইদুল ইসলাম, ঢাকা</div>
+        </div>
+        <br>
+        <button class="btn btn-gold" style="width:100%" onclick="closeModalDirect('quran'); scrollToEnroll('কুরআন শিক্ষা')">🎓 এখনই এনরোল করুন</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-health" onclick="closeModal(event, 'health')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModalDirect('health')">✕</button>
+    <div class="modal-grid">
+      <div class="modal-img health">🌿</div>
+      <div class="modal-content">
+        <h2>তিব্বে নববী ও প্রফেটিক লাইফস্টাইল</h2>
+        <div class="modal-price">৳ ৮০০ (সম্পূর্ণ কোর্স ফি)</div>
+        <p class="modal-desc">রাসূল (সা.) কিভাবে খেতেন, কীভাবে সুস্থ থাকতেন তার উপর ভিত্তি করে তৈরি আমাদের এই বিশেষ কোর্স। আধুনিক বিজ্ঞানের সাথে সুন্নাহর অপূর্ব মিল এখানে শেখানো হবে।</p>
+        <div class="trust-badges">
+          <span class="badge green">✓ বিশেষজ্ঞ প্যানেল</span>
+          <span class="badge green">✓ পিডিএফ গাইড</span>
+          <span class="badge gold">⭐ সার্টিফিকেট</span>
+        </div>
+        <div class="modal-section-title">কোর্সে যা যা শিখবেন</div>
+        <ul class="modal-list">
+          <li>সুন্নাহ সম্মত খাওয়ার নিয়ম ও পরিমাণ</li>
+          <li>রাসূল (সা.) এর প্রিয় খাবারসমূহের পুষ্টিগুণ</li>
+          <li>প্রাকৃতিক উপাদান (মধু, কালোজিরা) দিয়ে প্রাথমিক চিকিৎসা</li>
+          <li>শারীরিক ও মানসিক সুস্থতায় নামাজের ভূমিকা</li>
+          <li>ভেজাল খাবার চেনার উপায় ও তা থেকে বাঁচার গাইডলাইন</li>
+        </ul>
+        <div class="modal-section-title">কোর্সের সময়সূচি</div>
+        <ul class="modal-list">
+          <li>সপ্তাহে ২ দিন (রাত ৮:০০ টা - ৯:০০ টা)</li>
+          <li>মোট ক্লাস: ৮টি (১ মাস)</li>
+          <li>মাধ্যম: Google Meet / Zoom</li>
+        </ul>
+        <div class="review-box">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"এই কোর্সটি করার পর আমার লাইফস্টাইল সম্পূর্ণ বদলে গেছে। গ্যাস্ট্রিক ও দুর্বলতা অনেকটাই কমেছে সুন্নাহ মেনে চলার পর।"</div>
+          <div class="review-author">— ফাতিমা আক্তার, সিলেট</div>
+        </div>
+        <br>
+        <button class="btn btn-gold" style="width:100%" onclick="closeModalDirect('health'); scrollToEnroll('তিব্বে নববী')">🎓 এখনই এনরোল করুন</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="enroll" class="sec">
+  <div class="wrap">
+    <div class="tag">এনরোলমেন্ট</div>
+    <h2 class="title">কোর্সে ভর্তি হোন</h2>
+    <div class="divider"></div>
+    <p class="body-text" style="max-width:480px">আপনার পছন্দের কোর্সে ভর্তি হওয়ার জন্য নিচের যেকোনো মাধ্যমে আমাদের সাথে যোগাযোগ করুন অথবা সরাসরি ফর্ম পূরণ করুন।</p>
+    <div class="enroll-grid">
+      <div>
+        <div class="enroll-options">
+          <a href="tel:+8801709051652" class="enroll-opt">
+            <div class="enroll-opt-icon oi-phone">📞</div>
+            <div>
+              <h4>সরাসরি কল করুন</h4>
+              <p>কোর্স সম্পর্কে জানতে এবং ভর্তি হতে কল করুন।</p>
+            </div>
+          </a>
+          <a href="https://wa.me/8801709051652" target="_blank" class="enroll-opt">
+            <div class="enroll-opt-icon oi-wa">💬</div>
+            <div>
+              <h4>WhatsApp মেসেজ</h4>
+              <p>WhatsApp-এ মেসেজ পাঠান। আমরা পেমেন্ট ডিটেইলস দেব।</p>
+            </div>
+          </a>
+          <div class="enroll-opt" style="border-color:var(--gold); cursor:default">
+            <div class="enroll-opt-icon oi-online">🖥️</div>
+            <div>
+              <h4>অনলাইন ফর্ম</h4>
+              <p>নিচের ফর্ম পূরণ করুন। আমাদের টিম যোগাযোগ করবে।</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="enroll-form-box">
+        <h3>ভর্তির ফর্ম</h3>
+        <div class="field">
+          <label>আপনার নাম *</label>
+          <input type="text" id="enroll-name" placeholder="যেমন: মোহাম্মদ আলী">
+        </div>
+        <div class="field">
+          <label>মোবাইল / WhatsApp নম্বর *</label>
+          <input type="tel" id="enroll-phone" placeholder="০১XXXXXXXXX">
+        </div>
+        <div class="field">
+          <label>কোর্স নির্বাচন *</label>
+          <select id="enroll-course">
+            <option value="">কোন কোর্সে ভর্তি হতে চান?</option>
+            <option>তাজবীদ ও সহীহ কুরআন শিক্ষা (৳ ১,০০০)</option>
+            <option>তিব্বে নববী ও প্রফেটিক লাইফস্টাইল (৳ ৮০০)</option>
+            <option>উভয় কোর্স (কম্বো অফার)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>যেকোনো প্রশ্ন (ঐচ্ছিক)</label>
+          <textarea id="enroll-msg" placeholder="আপনার যদি কোর্স নিয়ে কোনো প্রশ্ন থাকে..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitEnroll()">🎓 ফর্ম জমা দিন</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trust" class="sec-sm">
+  <div class="wrap">
+    <div class="tag center">আমাদের প্রতিশ্রুতি</div>
+    <h2 class="title center">কেন আল-ফাযরানের কোর্স?</h2>
+    <div class="divider center"></div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon">🎓</div>
+        <h4>অভিজ্ঞ ওস্তাদ</h4>
+        <p>যোগ্য ও সার্টিফাইড স্কলারদের মাধ্যমে ক্লাস পরিচালনা করা হয়।</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">💻</div>
+        <h4>লাইভ ইন্টারেকশন</h4>
+        <p>সরাসরি প্রশ্ন করার এবং ফিডব্যাক নেওয়ার ১০০% সুযোগ।</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🎥</div>
+        <h4>লাইফটাইম রেকর্ডিং</h4>
+        <p>ক্লাস মিস করলে পরবর্তীতে ভিডিও রেকর্ডিং দেখার সুবিধা।</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🤝</div>
+        <h4>প্রাইভেট সাপোর্ট গ্রুপ</h4>
+        <p>স্টুডেন্টদের জন্য আলাদা সাপোর্ট গ্রুপ, যেখানে সব সময় সাহায্য পাওয়া যায়।</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="wrap">
+    <div class="cta-inner">
+      <h2>আজই জ্ঞান অর্জনের পথে যুক্ত হোন 📖</h2>
+      <p>সঠিক জ্ঞানই পারে আপনার দুনিয়া এবং আখিরাতকে সুন্দর করতে। আল-ফাযরানের সাথে শুরু হোক আপনার এই পথচলা।</p>
+      <div class="cta-btns">
+        <a href="#enroll" class="btn btn-white">🎓 ভর্তি হোন</a>
+        <a href="index.html" class="btn btn-dark">🛒 প্রোডাক্ট দেখুন</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-logo">আল-<span>ফাযরান</span> 🌿</div>
+    <div style="font-size:0.82rem; color:rgba(255,255,255,0.4); margin-bottom:12px">কুরআন • স্বাস্থ্য • সুস্থতা</div>
+    <div class="footer-links">
+      <a href="index.html">প্রোডাক্ট হোম</a>
+      <a href="#hero">কোর্সসমূহ</a>
+      <a href="#mission">আমাদের লক্ষ্য</a>
+      <a href="#enroll">যোগাযোগ</a>
+    </div>
+    <p>© ২০২৫ আল-ফাযরান হেলদি লাইফ। সর্বস্বত্ব সংরক্ষিত।</p>
+    <p style="margin-top:6px">উম্মাহর স্বাস্থ্যের জন্য ❤️ ও তাওয়াক্কুলের সাথে তৈরি</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast">✅ <span id="toast-msg"></span></div>
+
+<script>
+// ── Mobile Menu ──
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ── Navbar Scroll ──
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.style.boxShadow = window.scrollY > 10 ? '0 4px 30px rgba(0,0,0,0.08)' : 'none';
+});
+
+// ── Modal ──
+function openModal(courseType) {
+  document.getElementById('modal-' + courseType).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(event, courseType) {
+  if (event.target === event.currentTarget) closeModalDirect(courseType);
+}
+function closeModalDirect(courseType) {
+  document.getElementById('modal-' + courseType).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── Toast ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ── Scroll to Enroll with pre-fill ──
+function scrollToEnroll(courseName) {
+  const sel = document.getElementById('enroll-course');
+  for (let opt of sel.options) {
+    if (opt.text.includes(courseName)) { sel.value = opt.value; break; }
+  }
+  document.getElementById('enroll').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Enroll Submit ──
+function submitEnroll() {
+  const name = document.getElementById('enroll-name').value.trim();
+  const phone = document.getElementById('enroll-phone').value.trim();
+  const course = document.getElementById('enroll-course').value;
+  
+  if (!name || !phone || !course) {
+    showToast('⚠️ নাম, নম্বর এবং কোর্সের নাম পূরণ করুন');
+    return;
+  }
+  
+  showToast('ভর্তির আবেদন সফল! আমরা শীঘ্রই যোগাযোগ করব।');
+  document.getElementById('enroll-name').value = '';
+  document.getElementById('enroll-phone').value = '';
+  document.getElementById('enroll-course').value = '';
+  document.getElementById('enroll-msg').value = '';
+}
+</script>
+</body>
+</html>
