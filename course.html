@@ -722,7 +722,7 @@ section{position:relative;overflow:hidden;}
             <input type="tel" id="f-phone" class="form-input" placeholder="01XXXXXXXXX">
           </div>
           <div class="form-group">
-            <label class="form-label">Transaction ID (পেমেন্টের পরে) *</label>
+            <label class="form-label">যে নম্বর থেকে টাকা পাঠিয়েছেন (পেমেন্টের পরে) *</label>
             <input type="text" id="f-txn" class="form-input" placeholder="বিকাশ/নগদ ট্রানজেকশন নম্বর">
           </div>
 
@@ -824,7 +824,7 @@ function submitForm() {
 
   if (!name) { alert('অনুগ্রহ করে আপনার নাম লিখুন।'); return; }
   if (!phone || phone.length < 11) { alert('সঠিক মোবাইল নম্বর লিখুন।'); return; }
-  if (!txn) { alert('Transaction ID লিখুন। পেমেন্ট করার পরে Transaction ID পাবেন।'); return; }
+  if (!txn) { alert('যে নম্বর থেকে টাকা পাঠিয়েছেন'); return; }
 
   var optLabel = selectedOption === 'session' ? 'স্পেশাল সেশন (৯৯ টাকা)' : '৪ সাপ্তাহের পূর্ণ কোর্স ফি (৩০০০ টাকা)';
   var price = selectedOption === 'session' ? '৯৯' : '৩০০০';
