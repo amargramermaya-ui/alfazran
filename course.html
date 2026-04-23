@@ -676,8 +676,8 @@ section{position:relative;overflow:hidden;}
       <h4>📋 পেমেন্ট করার নিয়ম:</h4>
       <div class="pm-step"><div class="sn">১</div><span>বিকাশ/নগদ অ্যাপ খুলুন এবং "Send Money" বা "পাঠাও" সিলেক্ট করুন</span></div>
       <div class="pm-step"><div class="sn">২</div><span>নম্বরে পাঠান: <strong>01619070709</strong> — স্পেশাল সেশন: ৯৯ টাকা / পূর্ণ কোর্স: ৩০০০ টাকা</span></div>
-      <div class="pm-step"><div class="sn">৩</div><span>Transaction ID (ট্রানজেকশন নম্বর) সংরক্ষণ করুন</span></div>
-      <div class="pm-step"><div class="sn">৪</div><span>নিচের ফর্মে রেজিস্ট্রেশন করুন এবং Transaction ID যুক্ত করুন</span></div>
+      <div class="pm-step"><div class="sn">৩</div><span>যে নম্বর থেকে টাকা পাঠিয়েছেন সংরক্ষণ করুন</span></div>
+      <div class="pm-step"><div class="sn">৪</div><span>নিচের ফর্মে রেজিস্ট্রেশন করুন এবং নম্বর যুক্ত করুন</span></div>
       <div class="pm-step"><div class="sn">৫</div><span>রেজিস্ট্রেশনের পরে WhatsApp-এ কনফার্মেশন পাবেন ইনশাআল্লাহ</span></div>
     </div>
   </div>
@@ -723,7 +723,7 @@ section{position:relative;overflow:hidden;}
           </div>
           <div class="form-group">
             <label class="form-label">যে নম্বর থেকে টাকা পাঠিয়েছেন (পেমেন্টের পরে) *</label>
-            <input type="text" id="f-txn" class="form-input" placeholder="বিকাশ/নগদ ট্রানজেকশন নম্বর">
+            <input type="text" id="f-txn" class="form-input" placeholder="বিকাশ/নগদ নম্বর">
           </div>
 
           <div class="price-sum">
@@ -836,7 +836,7 @@ function submitForm() {
     '📱 মোবাইল: ' + phone + '\n' +
     '🎯 অপশন: ' + optLabel + '\n' +
     '💰 পরিমাণ: ' + price + ' টাকা\n' +
-    '🔢 Txn ID: ' + txn + '\n\n' +
+    '🔢 নম্বর: ' + txn + '\n\n' +
     '✅ যাচাই করে কনফার্মেশন দিন।'
   );
 
