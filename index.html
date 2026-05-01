@@ -194,7 +194,6 @@ ul { list-style: none; }
   background: linear-gradient(135deg,var(--gold),var(--gold-dk));
   display: flex; align-items: center; justify-content: center;
   font-size: 1.1rem; flex-shrink: 0;
-  overflow: hidden; padding: 0;
 }
 .hero-card-top h4 { color: #fff; font-size: 0.97rem; font-weight: 600; }
 .hero-card p { color: rgba(255,255,255,0.62); font-size: 0.84rem; line-height: 1.55; }
@@ -214,14 +213,13 @@ ul { list-style: none; }
   width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
   background: linear-gradient(135deg,var(--forest),var(--emerald));
   display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-  overflow: hidden; padding: 0;
 }
 .mc h4 { font-size: 0.97rem; font-weight: 600; color: var(--forest); margin-bottom: 4px; }
 .mc p { font-size: 0.85rem; color: var(--soft); line-height: 1.55; }
 /* ═══════════════════════════════════════
    PRODUCTS
 ═══════════════════════════════════════ */
-#products { background: var(--sage); }
+#products { background: var(--sage); padding-bottom: 40px; }
 .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 50px; }
 .product-card {
   background: var(--white); border-radius: var(--rad-lg);
@@ -231,7 +229,7 @@ ul { list-style: none; }
 .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
 .prod-img {
   height: 220px; display: flex; align-items: center; justify-content: center;
-  font-size: 5.5rem; position: relative; overflow: hidden;
+  font-size: 5.5rem; position: relative;
 }
 .prod-img.mustard { background: linear-gradient(135deg,#fff8e1,#ffd54f22); }
 .prod-img.turmeric { background: linear-gradient(135deg,#fff9e6,#ffc10722); }
@@ -239,12 +237,11 @@ ul { list-style: none; }
   position: absolute; top: 14px; left: 14px;
   background: var(--forest); color: #fff;
   font-size: 0.7rem; font-weight: 700; padding: 4px 12px; border-radius: 50px;
-  letter-spacing: 0.06em; z-index: 1;
+  letter-spacing: 0.06em;
 }
 .stock-tag {
   position: absolute; top: 14px; right: 14px;
   font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 50px;
-  z-index: 1;
 }
 .stock-tag.in { background: var(--mint); color: var(--forest); }
 .stock-tag.out { background: #fde8e8; color: #b71c1c; }
@@ -266,6 +263,34 @@ ul { list-style: none; }
 }
 .prod-usage strong { color: var(--forest); }
 .prod-btns { display: flex; gap: 10px; }
+/* ═══════════════════════════════════════
+   PRODUCT SHOWCASE (GALLERY)
+═══════════════════════════════════════ */
+#showcase { background: var(--cream); padding-top: 20px; }
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 30px;
+}
+.showcase-item {
+  border-radius: var(--rad-sm);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--border);
+  position: relative;
+  background: var(--sage);
+}
+.showcase-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.showcase-item:hover img {
+  transform: scale(1.1);
+}
 /* ═══════════════════════════════════════
    PRODUCT DETAIL MODAL
 ═══════════════════════════════════════ */
@@ -292,7 +317,6 @@ ul { list-style: none; }
 .modal-img {
   height: 320px; display: flex; align-items: center; justify-content: center;
   font-size: 7rem; border-radius: var(--rad-lg) 0 0 var(--rad-lg);
-  position: relative; overflow: hidden;
 }
 .modal-img.mustard { background: linear-gradient(135deg,#fff8e1,#ffd54f33); }
 .modal-img.turmeric { background: linear-gradient(135deg,#fff9e6,#ffc10733); }
@@ -608,6 +632,7 @@ footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
 }
 @media (max-width: 600px) {
   .benefits-grid, .trust-grid { grid-template-columns: 1fr; }
+  .showcase-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-btns, .cta-btns { flex-direction: column; align-items: flex-start; }
   .cta-btns { align-items: center; }
   .earn-box { padding: 24px 18px; }
@@ -675,25 +700,21 @@ footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
       <div class="hero-right">
         <div class="hero-card">
           <div class="hero-card-top">
-            <div class="hero-card-icon">
-                <img src="https://drive.google.com/uc?export=view&id=1pP_3n4xKSiiHtvLhqFzEg5PKD6gwNVSp" alt="Mustard Oil" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
-            </div>
+            <div class="hero-card-icon">🫒</div>
             <h4>খাঁটি সরিষার তেল</h4>
           </div>
           <p>কোল্ড-প্রেসড পদ্ধতিতে তৈরি, কোনো রাসায়নিক বা ভেজাল ছাড়া। সরাসরি প্রকৃতি থেকে আপনার রান্নাঘরে।</p>
         </div>
         <div class="hero-card">
           <div class="hero-card-top">
-            <div class="hero-card-icon">
-                <img src="https://drive.google.com/uc?export=view&id=1xqkvQA7vKTiJCDMA3--8WMDe-vRN93uK" alt="Turmeric Powder" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
-            </div>
+            <div class="hero-card-icon">💛</div>
             <h4>খাঁটি হলুদ গুঁড়া</h4>
           </div>
           <p>অপ্রক্রিয়াজাত প্রাকৃতিক হলুদ — কোনো রং বা কৃত্রিম উপাদান নেই। শতাব্দী ধরে পরীক্ষিত নিরাময়কারী মশলা।</p>
         </div>
         <div class="hero-card">
           <div class="hero-card-top">
-            <div class="hero-card-icon" style="padding:0">💚</div>
+            <div class="hero-card-icon">💚</div>
             <h4>এফিলিয়েট প্রোগ্রাম</h4>
           </div>
           <p>আপনার লিংক শেয়ার করুন এবং প্রতিটি বিক্রয়ে আজীবন ১০% কমিশন উপার্জন করুন। সম্পূর্ণ হালাল আয়।</p>
@@ -715,36 +736,28 @@ footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
       </div>
       <div class="mission-cards">
         <div class="mc">
-          <div class="mc-icon">
-              <img src="https://drive.google.com/uc?export=view&id=11dBhZ-8B97Hw-hbQPeTz8KSyqcCqWg3O" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
-          </div>
+          <div class="mc-icon">🌿</div>
           <div>
             <h4>হালাল ও তাইয়্যিব (حلال طیب)</h4>
             <p>আমরা শুধু "হালাল" নয়, "তাইয়্যিব" (সম্পূর্ণ বিশুদ্ধ) নিশ্চিত করি। রাসায়নিক, সংযোজন বা প্রতারণামুক্ত পণ্য।</p>
           </div>
         </div>
         <div class="mc">
-          <div class="mc-icon">
-              <img src="https://drive.google.com/uc?export=view&id=1jCsQSFSSfQTJ3CuT43SjfHaMWehBRxwz" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
-          </div>
+          <div class="mc-icon">🏃</div>
           <div>
             <h4>সুস্থ জীবনধারা</h4>
             <p>সুস্থ থাকা একটি ইসলামিক সুন্নাহ। আমরা ইসলামিক নির্দেশনা অনুযায়ী পরিষ্কার খাবার ও সুস্থ জীবনধারা প্রচার করি।</p>
           </div>
         </div>
         <div class="mc">
-          <div class="mc-icon">
-              <img src="https://drive.google.com/uc?export=view&id=148bBqNTh0EtMfgzUPyEgBTd3KYxcdjYM" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
-          </div>
+          <div class="mc-icon">🤝</div>
           <div>
             <h4>সততা ও বিশ্বাস</h4>
             <p>পরিষ্কার মূল্য, সৎ কমিশন, কোনো লুকানো শর্ত নেই। আমরা আমাদের অংশীদারদের কাছ থেকে যে সততা চাই, সেই একই নীতিতে ব্যবসা করি।</p>
           </div>
         </div>
         <div class="mc">
-          <div class="mc-icon">
-              <img src="https://drive.google.com/uc?export=view&id=1ijrlCr2zHCHKj8-ECil8arRBmUSwR-n_" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
-          </div>
+          <div class="mc-icon">🌍</div>
           <div>
             <h4>সম্প্রদায়ের কল্যাণ</h4>
             <p>আমাদের এফিলিয়েট প্রোগ্রাম মানুষকে হালাল আয় করতে এবং তাদের সম্প্রদায়ের স্বাস্থ্য উন্নয়নে সক্ষম করে।</p>
@@ -754,6 +767,7 @@ footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
     </div>
   </div>
 </section>
+
 <section id="products" class="sec">
   <div class="wrap">
     <div class="tag center">আমাদের পণ্য</div>
@@ -763,7 +777,7 @@ footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
     <div class="products-grid">
       <div class="product-card">
         <div class="prod-img mustard">
-          <img src="https://drive.google.com/uc?export=view&id=1VrvqaWlewahsY19CjN42JF04WkvqHnBl" alt="খাঁটি সরিষার তেল" style="position: absolute; width: 100%; height: 100%; object-fit: cover; top: 0; left: 0;">
+          🫒
           <span class="prod-badge">বেস্টসেলার</span>
           <span class="stock-tag in">✓ স্টক আছে</span>
         </div>
@@ -786,7 +800,7 @@ footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
       </div>
       <div class="product-card">
         <div class="prod-img turmeric">
-          <img src="https://drive.google.com/uc?export=view&id=1WJuyIw-sp22jYuYpXfalaegz8W_z2SIH" alt="খাঁটি হলুদ গুঁড়া" style="position: absolute; width: 100%; height: 100%; object-fit: cover; top: 0; left: 0;">
+          🌿
           <span class="prod-badge">হালাল সার্টিফাইড</span>
           <span class="stock-tag in">✓ স্টক আছে</span>
         </div>
@@ -810,13 +824,55 @@ footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
     </div>
   </div>
 </section>
+
+<!-- NEW SHOWCASE SECTION -->
+<section id="showcase" class="sec-sm">
+  <div class="wrap">
+    <div class="tag center">গ্যালারি</div>
+    <h2 class="title center">প্রোডাক্ট শোকেস</h2>
+    <div class="divider center"></div>
+    <p class="body-text center" style="max-width:540px;margin:0 auto">আমাদের হালাল ও বিশুদ্ধ পণ্যের এক ঝলক</p>
+    
+    <div class="showcase-grid">
+      <div class="showcase-item">
+        <img src="https://drive.google.com/thumbnail?id=1VrvqaWlewahsY19CjN42JF04WkvqHnBl&sz=w1000" alt="Showcase 1">
+      </div>
+      <div class="showcase-item">
+        <img src="https://drive.google.com/thumbnail?id=1WJuyIw-sp22jYuYpXfalaegz8W_z2SIH&sz=w1000" alt="Showcase 2">
+      </div>
+      <div class="showcase-item">
+        <img src="https://drive.google.com/thumbnail?id=1UW8WlKzaFeMLj41A6BLefhvqw9DiSflF&sz=w1000" alt="Showcase 3">
+      </div>
+      <div class="showcase-item">
+        <img src="https://drive.google.com/thumbnail?id=1ozoc4-BuzKupFr9GJ394NDIJIdPWkTHo&sz=w1000" alt="Showcase 4">
+      </div>
+      <div class="showcase-item">
+        <img src="https://drive.google.com/thumbnail?id=1pP_3n4xKSiiHtvLhqFzEg5PKD6gwNVSp&sz=w1000" alt="Showcase 5">
+      </div>
+      <div class="showcase-item">
+        <img src="https://drive.google.com/thumbnail?id=1xqkvQA7vKTiJCDMA3--8WMDe-vRN93uK&sz=w1000" alt="Showcase 6">
+      </div>
+      <div class="showcase-item">
+        <img src="https://drive.google.com/thumbnail?id=11dBhZ-8B97Hw-hbQPeTz8KSyqcCqWg3O&sz=w1000" alt="Showcase 7">
+      </div>
+      <div class="showcase-item">
+        <img src="https://drive.google.com/thumbnail?id=1jCsQSFSSfQTJ3CuT43SjfHaMWehBRxwz&sz=w1000" alt="Showcase 8">
+      </div>
+      <div class="showcase-item">
+        <img src="https://drive.google.com/thumbnail?id=148bBqNTh0EtMfgzUPyEgBTd3KYxcdjYM&sz=w1000" alt="Showcase 9">
+      </div>
+      <div class="showcase-item">
+        <img src="https://drive.google.com/thumbnail?id=1ijrlCr2zHCHKj8-ECil8arRBmUSwR-n_&sz=w1000" alt="Showcase 10">
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="modal-overlay" id="modal-mustard" onclick="closeModal(event, 'mustard')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModalDirect('mustard')">✕</button>
     <div class="modal-grid">
-      <div class="modal-img mustard">
-          <img src="https://drive.google.com/uc?export=view&id=1UW8WlKzaFeMLj41A6BLefhvqw9DiSflF" alt="সরিষার তেল" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-      </div>
+      <div class="modal-img mustard">🫒</div>
       <div class="modal-content">
         <h2>খাঁটি সরিষার তেল</h2>
         <div class="modal-price">৳ ৩২০ / ৫০০মিলি | ৳ ৬০০ / ১ লিটার</div>
@@ -856,9 +912,7 @@ footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
   <div class="modal-box">
     <button class="modal-close" onclick="closeModalDirect('turmeric')">✕</button>
     <div class="modal-grid">
-      <div class="modal-img turmeric">
-          <img src="https://drive.google.com/uc?export=view&id=1ozoc4-BuzKupFr9GJ394NDIJIdPWkTHo" alt="খাঁটি হলুদ গুঁড়া" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-      </div>
+      <div class="modal-img turmeric">🌿</div>
       <div class="modal-content">
         <h2>খাঁটি হলুদ গুঁড়া</h2>
         <div class="modal-price">৳ ১৮০ / ২০০গ্রাম | ৳ ৩২০ / ৫০০গ্রাম</div>
@@ -1169,7 +1223,7 @@ footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
           <input type="text" id="reg-name" placeholder="যেমন: মোহাম্মদ আব্দুল্লাহ">
         </div>
         <div class="field">
-          <label>মোবাইল নম্বর (বিকাশ/ন নগদ) *</label>
+          <label>মোবাইল নম্বর (বিকাশ/নগদ) *</label>
           <input type="tel" id="reg-phone" placeholder="০১XXXXXXXXX">
         </div>
         <div class="field">
@@ -1249,12 +1303,12 @@ footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 10px; }
       <div class="trust-card">
         <div class="trust-icon">🚫</div>
         <h4>শূন্য ভেজাল</h4>
-        <p>কোনো মিশ্রণ নেই, কোনো কৃত্রিম রং নেই। যা দেখবেন তাই পাবেন।</p>
+        <p>কোনো মিশ্রণ নেই, কোনো কৃত্রিম রং গঠন নেই। যা দেখবেন তাই পাবেন।</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">📖</div>
         <h4>স্বচ্ছ সিস্টেম</h4>
-        <p>পরিষ্কার মূল্য, স্পষ্ট কমিশন। আমরা কিছুই লুকাই পণ্ডিত না।</p>
+        <p>পরিষ্কার মূল্য, স্পষ্ট কমিশন। আমরা কিছুই লুকাই না।</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">🌙</div>
